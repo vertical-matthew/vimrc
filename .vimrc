@@ -260,11 +260,35 @@ nnoremap <leader>a myggVG`y
 
 let g:highlightedyank_highlight_duration = 200
 
-"Test insertion 
-"TEs twot
-"Added from Desktop
-"here is a change
-"here is a change
-"matthew
-"here
+"This is a different change
 
+" New here
+
+"
+""
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
