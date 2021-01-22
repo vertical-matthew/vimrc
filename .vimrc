@@ -5,7 +5,7 @@ set undolevels=10000
 set nobackup
 set nowritebackup
 set noswapfile
-set undodir=~/.vim/undodir
+set undodir=/home/matt/.vim/undodir
 set undofile
 
 " Plugins
@@ -19,7 +19,7 @@ Plug 'mbbill/undotree'
 Plug 'preservim/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'mg979/vim-visual-multi'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-rooter'
 Plug 'tmhedberg/simpylfold'
@@ -263,3 +263,8 @@ let g:highlightedyank_highlight_duration = 200
 "Test insertion 
 "TEs twot
 "Added from Desktop
+"here is a change
+"here is a change
+"matthew
+"here
+
