@@ -8,6 +8,8 @@ set noswapfile
 set undodir=/home/matt/.vim/undodir
 set undofile
 
+let g:polyglot_disabled = ['markdown']
+
 " Plugins
 filetype off
 filetype plugin indent off
@@ -50,6 +52,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-unimpaired'
 Plug 'machakann/vim-highlightedyank'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 filetype plugin indent on
@@ -98,7 +101,7 @@ imap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap / :set hlsearch<CR> /
-nnoremap <leader>eol :set list!<CR> " Toggle tabs and EOL
+nnoremap <leader>EOL :set list!<CR> " Toggle tabs and EOL
 nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
 nnoremap ,, <C-w>v          " Vertical split
 nnoremap ,m <C-w>s         " Horizontal split 
@@ -225,6 +228,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>commits :Commits<CR>
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
+nnoremap <silent> <Leader>; :FZF<CR>
 imap <leader>1 <plug>(fzf-complete-line)
 inoremap <expr> <leader>2 fzf#vim#complete#path('rg --files')
 inoremap <expr> <leader>3 fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
@@ -243,10 +247,9 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 nmap <leader>S <Plug>(easymotion-overwin-f2)
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 nmap <leader>p <Plug>yankstack_substitute_older_paste
-
 " Function Keys
 nnoremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
-nnoremap <F2> :TagbarToggle<CR>
+nnoremap <F2> :TogglePencil<CR>
 nnoremap <F3> :set hlsearch!<CR>
 nnoremap <F4> :TagbarToggle<CR>
 nnoremap <F5> :UndotreeToggle<CR>
@@ -254,41 +257,9 @@ nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :TagbarToggle<CR>
 nnoremap <F8> :UndotreeToggle<CR> :NERDTreeToggle<CR> :TagbarToggle<CR>
 
-
 " Select all
-nnoremap <leader>a myggVG`y
+nnoremap <leader>a ggVG
 
 let g:highlightedyank_highlight_duration = 200
 
-"This is a different change
-
-" New here
-
-"
-""
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
-"
+nnoremap <Leader>e :e 
