@@ -53,6 +53,7 @@ Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-unimpaired'
 Plug 'machakann/vim-highlightedyank'
 Plug 'sheerun/vim-polyglot'
+Plug 'brooth/far.vim'
 
 call plug#end()
 filetype plugin indent on
