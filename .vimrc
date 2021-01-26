@@ -243,9 +243,15 @@ nnoremap <Leader>tt :Limelight!!<CR>
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-nmap <leader>S <Plug>(easymotion-overwin-f2)
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>s <Plug>(easymotion-overwin-f2)
+
+" Control left and right arrows for limelight and goyo                
+nmap <ESC>[1;5D :Goyo<CR>
+nmap <ESC>[1;5C :Limelight!!<CR>
+
+"Control up and down to go through yands
+nmap <ESC>[1;5A <Plug>yankstack_substitute_older_paste
+nmap <ESC>[1;5B <Plug>yankstack_substitute_newer_paste
 
 " Function Keys
 nnoremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
@@ -266,4 +272,11 @@ let g:highlightedyank_highlight_duration = 200
 
 " Edit a file with :e
 nnoremap <Leader>e :e 
+
+" Highlight current line
+let g:conoline_auto_enable = 1
+let g:conoline_color_insert_nr_dark = 'guibg=#000000'
+
+" Yank to end of line
+nnoremap Y y$<cr>
 
