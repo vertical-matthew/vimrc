@@ -228,11 +228,11 @@ nnoremap <silent> <Leader>H :Helptags<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>commits :Commits<CR>
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
-nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
+nnoremap <silent> <Leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <silent> <Leader>; :FZF<CR>
-imap <leader>1 <plug>(fzf-complete-line)
-inoremap <expr> <leader>2 fzf#vim#complete#path('rg --files')
-inoremap <expr> <leader>3 fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+imap <leader>11 <plug>(fzf-complete-line)
+inoremap <expr> <leader>22 fzf#vim#complete#path('rg --files')
+inoremap <expr> <leader>33 fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
 let NERDTreeShowHidden=1
 let g:UltiSnipsExpandTrigger="<F12>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -252,11 +252,15 @@ nmap <leader>p <Plug>yankstack_substitute_older_paste
 nnoremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 nnoremap <F2> :TogglePencil<CR>
 nnoremap <F3> :set hlsearch!<CR>
-nnoremap <F4> :TagbarToggle<CR>
+nnoremap <F4> :e /home/matt/.vimrc<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :TagbarToggle<CR>
-nnoremap <F8> :UndotreeToggle<CR> :NERDTreeToggle<CR> :TagbarToggle<CR>
+nnoremap <F8> :w!<cr>
+nnoremap <F9> :set wrap!<cr>
+" nnoremap <F10> :Goyo<cr>
+" nnoremap <F11> :Limelight!!<cr>
+" let g:UltiSnipsExpandTrigger="<F12>"
 
 " Select all
 nnoremap <leader>a ggVG
@@ -264,3 +268,4 @@ nnoremap <leader>a ggVG
 let g:highlightedyank_highlight_duration = 200
 
 nnoremap <Leader>e :e 
+
