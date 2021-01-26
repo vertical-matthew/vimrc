@@ -8,6 +8,7 @@ set noswapfile
 set undodir=/home/matt/.vim/undodir
 set undofile
 
+" Disable polyglot for markdown
 let g:polyglot_disabled = ['markdown']
 
 " Plugins
@@ -54,7 +55,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'machakann/vim-highlightedyank'
 Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
-
+Plug 'miyakogi/conoline.vim'
 call plug#end()
 filetype plugin indent on
 syntax on
@@ -96,6 +97,7 @@ augroup SpellUnderline
     \   guisp=Red
 augroup END
 
+" Remaps!
 :ab matty Matthew Jay Kreidler
 colorscheme gruvbox
 imap jk <Esc>
@@ -113,10 +115,6 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>x :b#<CR>
 nmap Y y$
-
-" Making it so ; works like : for commands. Saves typing and
-" nnoremap ; :
-" nnoremap : ;
 
 " Add a new line, then go back to normal mode
 nnoremap <leader>o mzo<Esc>k`z
@@ -248,6 +246,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 nmap <leader>S <Plug>(easymotion-overwin-f2)
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 nmap <leader>p <Plug>yankstack_substitute_older_paste
+
 " Function Keys
 nnoremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 nnoremap <F2> :TogglePencil<CR>
@@ -256,16 +255,15 @@ nnoremap <F4> :e /home/matt/.vimrc<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :TagbarToggle<CR>
-nnoremap <F8> :w!<cr>
+nnoremap <F8> :ConoLineToggle<cr>
 nnoremap <F9> :set wrap!<cr>
-" nnoremap <F10> :Goyo<cr>
-" nnoremap <F11> :Limelight!!<cr>
-" let g:UltiSnipsExpandTrigger="<F12>"
 
 " Select all
 nnoremap <leader>a ggVG
 
+" Yank Blink
 let g:highlightedyank_highlight_duration = 200
 
+" Edit a file with :e
 nnoremap <Leader>e :e 
 
