@@ -56,6 +56,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
 Plug 'miyakogi/conoline.vim'
+Plug 'Chiel92/vim-autoformat'
 call plug#end()
 filetype plugin indent on
 syntax on
@@ -246,23 +247,23 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 nmap <leader>s <Plug>(easymotion-overwin-f2)
 
 " Control left and right arrows for limelight and goyo                
-nmap <ESC>[1;5D :Goyo<CR>
-nmap <ESC>[1;5C :Limelight!!<CR>
+noremap <ESC>[1;5D :Goyo<CR>
+noremap <ESC>[1;5C :Limelight!!<CR>
 
 "Control up and down to go through yands
 nmap <ESC>[1;5A <Plug>yankstack_substitute_older_paste
 nmap <ESC>[1;5B <Plug>yankstack_substitute_newer_paste
 
 " Function Keys
-nnoremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
-nnoremap <F2> :TogglePencil<CR>
-nnoremap <F3> :set hlsearch!<CR>
-nnoremap <F4> :e /home/matt/.vimrc<CR>
-nnoremap <F5> :UndotreeToggle<CR>
-nnoremap <F6> :NERDTreeToggle<CR>
-nnoremap <F7> :TagbarToggle<CR>
-nnoremap <F8> :ConoLineToggle<cr>
-nnoremap <F9> :set wrap!<cr>
+noremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+noremap <F2> :TogglePencil<CR>
+noremap <F3> :set hlsearch!<CR>
+noremap <F4> :e /home/matt/.vimrc<CR>
+noremap <F5> :UndotreeToggle<CR>
+noremap <F6> :NERDTreeToggle<CR>
+noremap <F7> :TagbarToggle<CR>
+noremap <F8> :ConoLineToggle<cr>
+noremap <F9> :set wrap!<cr>
 
 " Select all
 nnoremap <leader>a ggVG
@@ -280,3 +281,5 @@ let g:conoline_color_insert_nr_dark = 'guibg=#000000'
 " Yank to end of line
 nnoremap Y y$<cr>
 
+" Python autoformatter
+noremap <F10> :Autoformat<CR>
