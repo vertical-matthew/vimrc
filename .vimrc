@@ -19,50 +19,50 @@ Plug 'scrooloose/nerdtree', { 'off':  'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree'
-Plug 'preservim/tagbar'
-Plug 'tpope/vim-commentary'
-Plug 'mg979/vim-visual-multi'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-rooter'
-Plug 'tmhedberg/simpylfold'
-" Plug 'valloric/youcompleteme'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
-Plug 'dense-analysis/ale'
-Plug 'nvie/vim-flake8'
-Plug 'junegunn/goyo.vim'
-Plug 'ap/vim-css-color'
-Plug 'vim-scripts/fountain.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'tpope/vim-surround' 
-Plug 'godlygeek/tabular'
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
-Plug 'tpope/vim-markdown'
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-lexical'
-Plug 'reedes/vim-litecorrect'
-Plug 'reedes/vim-wordy'
-Plug 'vim-airline/vim-airline'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-repeat'
-Plug 'jupyter-vim/jupyter-vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'markonm/traces.vim'
-Plug 'tpope/vim-abolish'
-Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-unimpaired'
-Plug 'machakann/vim-highlightedyank'
-Plug 'sheerun/vim-polyglot'
-Plug 'brooth/far.vim'
-Plug 'miyakogi/conoline.vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'Konfekt/FastFold'
+" Plug 'preservim/tagbar'
+" Plug 'tpope/vim-commentary'
+" Plug 'mg979/vim-visual-multi'
+" Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-rooter'
+" Plug 'tmhedberg/simpylfold'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'morhetz/gruvbox'
+" Plug 'dense-analysis/ale'
+" Plug 'nvie/vim-flake8'
+" Plug 'junegunn/goyo.vim'
+" Plug 'ap/vim-css-color'
+" Plug 'vim-scripts/fountain.vim'
+" Plug 'junegunn/limelight.vim'
+" Plug 'tpope/vim-surround' 
+" Plug 'godlygeek/tabular'
+" Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+" Plug 'tpope/vim-markdown'
+" Plug 'reedes/vim-pencil'
+" Plug 'reedes/vim-lexical'
+" Plug 'reedes/vim-litecorrect'
+" Plug 'reedes/vim-wordy'
+" Plug 'vim-airline/vim-airline'
+" Plug 'maxbrunsfeld/vim-yankstack'
+" Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'tpope/vim-repeat'
+" Plug 'jupyter-vim/jupyter-vim'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'markonm/traces.vim'
+" Plug 'tpope/vim-abolish'
+" Plug 'tommcdo/vim-lion'
+" Plug 'tpope/vim-unimpaired'
+" Plug 'machakann/vim-highlightedyank'
+" Plug 'sheerun/vim-polyglot'
+" Plug 'brooth/far.vim'
+" Plug 'miyakogi/conoline.vim'
+" Plug 'Chiel92/vim-autoformat'
+" Plug 'Konfekt/FastFold'
+" Plug 'kana/vim-textobj-entire'
 call plug#end()
 filetype plugin indent on
 syntax on
-
+ 
 " Force to use underline for spell check results
 augroup SpellUnderline
   autocmd!
@@ -190,8 +190,8 @@ set wrapmargin=0
 " Saving
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded .VIMRC"
 nnoremap zz :update<cr> 
-noremap <c-s>s :update<cr>
-
+noremap <c-s> :update<cr>
+"
 " Filetype-specific
 au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
@@ -215,7 +215,7 @@ augroup END
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 autocmd FileType python imap <buffer>  <leader>, <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python map <buffer>  <leader>, :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd BufWritePost *.py call flake8#Flake8()
+" autocmd BufWritePost *.py call flake8#Flake8()
 autocmd FileType python inoremap """ """"""<left><left><left>
 
 " Plugin mappings
@@ -229,8 +229,6 @@ nnoremap <silent> <Leader>t :BTags<CR>
 nnoremap <silent> <Leader>H :History:<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>commits :Commits<CR>
-nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
-nnoremap <silent> <Leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <silent> <Leader>; :FZF<CR>
 imap <leader>11 <plug>(fzf-complete-line)
 inoremap <expr> <leader>22 fzf#vim#complete#path('rg --files')
@@ -252,7 +250,7 @@ nmap <leader>s <Plug>(easymotion-overwin-f2)
 noremap <ESC>[1;5D :Goyo<CR>
 noremap <ESC>[1;5C :Limelight!!<CR>
 
-"Control up and down to go through yands
+"Control up and down to go through yanks
 nmap <ESC>[1;5A <Plug>yankstack_substitute_older_paste
 nmap <ESC>[1;5B <Plug>yankstack_substitute_newer_paste
 
@@ -263,9 +261,9 @@ noremap <F3> :set hlsearch!<CR>
 noremap <F4> :e /home/matt/.vimrc<CR>
 noremap <F5> :UndotreeToggle<CR>
 noremap <F6> :NERDTreeToggle<CR> <c-w><c-p>
-noremap <F8> :TagbarToggle<CR>
 noremap <F7> :ConoLineToggle<cr>
-noremap <F13> :call flake8#Flake8()<CR0>" noremap <F9> :set wrap!<cr>
+noremap <F8> :TagbarToggle<CR>
+" noremap <F13> :call flake8#Flake8()<CR0>" noremap <F9> :set wrap!<cr>
 
 " Select all
 nnoremap<silent><nowait> <leader>a ggVG<CR>
@@ -286,27 +284,17 @@ nnoremap Y y$<cr>
 " Python autoformatter
 noremap <F9> :Autoformat<CR>
 
-" Fast window resizing with +/- keys (horizontal); / and * keys (vertical)
-if bufwinnr(1)
-  nnoremap <kPlus> zR<CR>
-  nnoremap <kMinus> zM<CR>
-  nnoremap <kDivide> zC<CR>
-  nnoremap <kMultiply> zO<CR>
-endif
+" use keypad plus and minus etc to open and close folds
+" note that numlock needs to be off for this to work
+nnoremap <kPlus> zR<CR>
+nnoremap <kMinus> zM<CR>
+nnoremap <kDivide> zC<CR>
+nnoremap <kMultiply> zO<CR>
 
-
-
-"
-"
-"
-"
-"
 " COC stuff
 let g:LanguageClient_serverCommands = {
     \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
     \ }
-
-
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -395,22 +383,14 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-
-
-
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
-
 " ALE
-"
 :highlight ALEError ctermbg=none cterm=underline
 :highlight ALEWarning ctermbg=none cterm=underline
 set nocompatible
@@ -439,7 +419,6 @@ Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-rooter'
 Plug 'tmhedberg/simpylfold'
-" Plug 'valloric/youcompleteme'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 Plug 'dense-analysis/ale'
@@ -657,6 +636,7 @@ let g:jupyter_mapkeys = 0
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
+
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
@@ -707,20 +687,10 @@ if bufwinnr(1)
   nnoremap <kDivide> zC<CR>
   nnoremap <kMultiply> zO<CR>
 endif
-
-
-
-"
-"
-"
-"
-"
 " COC stuff
 let g:LanguageClient_serverCommands = {
     \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
     \ }
-
-
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -809,21 +779,15 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-
-
-
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+let g:python_highlight_space_errors = 0
 
 
-" ALE
-"
-:highlight ALEError ctermbg=none cterm=underline
-:highlight ALEWarning ctermbg=none cterm=underline
+
+:set bt=
