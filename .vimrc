@@ -57,6 +57,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
 Plug 'miyakogi/conoline.vim'
 Plug 'Chiel92/vim-autoformat'
+Plug 'Konfekt/FastFold'
 call plug#end()
 filetype plugin indent on
 syntax on
@@ -260,10 +261,10 @@ noremap <F2> :TogglePencil<CR>
 noremap <F3> :set hlsearch!<CR>
 noremap <F4> :e /home/matt/.vimrc<CR>
 noremap <F5> :UndotreeToggle<CR>
-noremap <F6> :NERDTreeToggle<CR>
-noremap <F7> :TagbarToggle<CR>
-noremap <F8> :ConoLineToggle<cr>
-noremap <F9> :set wrap!<cr>
+noremap <F6> :NERDTreeToggle<CR> <c-w><c-p>
+noremap <F8> :TagbarToggle<CR>
+noremap <F7> :ConoLineToggle<cr>
+noremap <F13> :call flake8#Flake8()<CR0>" noremap <F9> :set wrap!<cr>
 
 " Select all
 nnoremap <leader>a ggVG
@@ -282,4 +283,16 @@ let g:conoline_color_insert_nr_dark = 'guibg=#000000'
 nnoremap Y y$<cr>
 
 " Python autoformatter
-noremap <F10> :Autoformat<CR>
+noremap <F9> :Autoformat<CR>
+
+" Fast window resizing with +/- keys (horizontal); / and * keys (vertical)
+if bufwinnr(1)
+  nnoremap <kPlus> zR<CR>
+  nnoremap <kMinus> zM<CR>
+  nnoremap <kDivide> zC<CR>
+  nnoremap <kMultiply> zO<CR>
+endif
+
+
+" Updatetime for tagbar
+set updatetime=500
