@@ -63,7 +63,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-sort-motion'
-Plug 'christoomey/vim-system-copy'
+Plug 'christoomey/vim-system-copy'  
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'kana/vim-textobj-line'
 Plug 'bps/vim-textobj-python'
@@ -73,7 +73,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'kien/rainbow_parentheses.vim'
 call plug#end()
 
-
+" sudo apt-get install xsel
 
 filetype plugin indent on
 syntax on
