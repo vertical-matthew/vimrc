@@ -66,7 +66,11 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'kana/vim-textobj-line'
-Plug 'rhysd/vim-textobj-anyblock'
+Plug 'bps/vim-textobj-python'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kshenoy/vim-signature'
+Plug 'terryma/vim-expand-region'
+Plug 'kien/rainbow_parentheses.vim'
 call plug#end()
 
 
@@ -400,3 +404,9 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBrace
