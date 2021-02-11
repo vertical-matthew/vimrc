@@ -42,7 +42,6 @@ Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-wordy'
 Plug 'vim-airline/vim-airline'
-Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-repeat'
@@ -71,6 +70,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'kshenoy/vim-signature'
 Plug 'terryma/vim-expand-region'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'kana/vim-arpeggio'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'rhysd/clever-f.vim'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'vim-scripts/YankRing.vim'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -118,6 +122,7 @@ augroup END
 " Remaps!
 :ab matty Matthew Jay Kreidler
 colorscheme gruvbox
+
 imap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -204,9 +209,9 @@ set wrapmargin=0
 
 " Saving
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded .VIMRC"
-nnoremap zz :update<cr> 
+nnoremap zz :update<cr>
 noremap <c-s> :update<cr>
-"
+
 " Filetype-specific
 au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
@@ -266,19 +271,19 @@ noremap <ESC>[1;5D :Goyo<CR>
 noremap <ESC>[1;5C :Limelight!!<CR>
 
 "Control up and down to go through yanks
-nmap <ESC>[1;5A <Plug>yankstack_substitute_older_paste
-nmap <ESC>[1;5B <Plug>yankstack_substitute_newer_paste
+" nmap <ESC>[1;5A <Plug>yankstack_substitute_older_paste
+" nmap <ESC>[1;5B <Plug>yankstack_substitute_newer_paste
 
 " Function Keys
 noremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 noremap <F2> :TogglePencil<CR>
 noremap <F3> :set hlsearch!<CR>
-noremap <F4> :e /home/matt/.vimrc<CR>
+noremap <F10> :e /home/matt/.vimrc<CR>
+noremap <F4> :YRShow<cr> 
 noremap <F5> :UndotreeToggle<CR>
 noremap <F6> :NERDTreeToggle<CR> <c-w><c-p>
 noremap <F7> :ConoLineToggle<cr>
 noremap <F8> :TagbarToggle<CR>
-" noremap <F13> :call flake8#Flake8()<CR0>" noremap <F9> :set wrap!<cr>
 
 " Select all
 nnoremap<silent><nowait> <leader>a ggVG<CR>
@@ -405,8 +410,28 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+" delete all white space
+" this works in a visual selection
+nnoremap <leader>% :g/^$/d <cr>
+vnoremap <leader>% :g/^$/d <cr>
+
+" delete all python comments, lines where the first character is #
+" this works in a visual selection
+nnoremap <leader># :g/^\s*#/d <cr>
+vnoremap <leader># :g/^\s*#/d <cr>
+" Load this plugin at this timing
+" to define :Arpeggio, arpeggio#map() and others used later.
+" packadd vim-arpeggio
+call arpeggio#map('i', '', 0, 'jkl', 'arpeggio')
+call arpeggio#map('i', '', 0, 'kl', 'testing')
+
+let g:yankring_max_history = 1000
+let g:yankring_min_element_length = 2
+let g:yankring_max_display = 70
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBrace
+
+
