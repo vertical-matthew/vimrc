@@ -8,6 +8,9 @@ set noswapfile
 set undodir=/home/matt/.vim/undodir
 set undofile
 
+
+let g:textobj_datetime_no_default_key_mappings = 1
+
 " Disable polyglot for markdown
 " let g:polyglot_disabled = ['markdown']
 " let g:textobj_wiw_no_default_key_mappings = 1
@@ -15,76 +18,104 @@ set undofile
 filetype off
 filetype plugin indent off
 call plug#begin('~/.vim/plugged')
+" New Splits
 Plug 'scrooloose/nerdtree', { 'off':  'NERDTreeToggle' }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree'
 Plug 'preservim/tagbar'
-Plug 'tpope/vim-commentary'
-Plug 'mg979/vim-visual-multi'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-rooter'
-Plug 'tmhedberg/simpylfold'
+Plug 'vim-scripts/YankRing.vim'
+"
+"
+"
+" Search
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
-Plug 'nvie/vim-flake8'
-Plug 'junegunn/goyo.vim'
-Plug 'ap/vim-css-color'
-Plug 'vim-scripts/fountain.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'tpope/vim-surround' 
+Plug 'rhysd/clever-f.vim'
+Plug 'easymotion/vim-easymotion'
+"
+"
+"
+" Python
+Plug 'airblade/vim-rooter'
 Plug 'godlygeek/tabular'
+Plug 'nvie/vim-flake8'
+Plug 'tmhedberg/simpylfold'
+Plug 'tpope/vim-fugitive'
+Plug 'jupyter-vim/jupyter-vim'
+Plug 'Konfekt/FastFold'
+Plug 'Chiel92/vim-autoformat'
+"
+"
+"
+" Prose
+Plug 'ap/vim-css-color'
+Plug 'honza/vim-snippets'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
-Plug 'tpope/vim-markdown'
-Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
+Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
-Plug 'vim-airline/vim-airline'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-repeat'
-Plug 'jupyter-vim/jupyter-vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'markonm/traces.vim'
+Plug 'tpope/vim-markdown'
+Plug 'vim-scripts/fountain.vim'
 Plug 'tpope/vim-abolish'
-Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-unimpaired'
-Plug 'machakann/vim-highlightedyank'
-" Plug 'sheerun/vim-polyglot'
+"
+"
+"
+" Other
+Plug 'SirVer/ultisnips'
 Plug 'brooth/far.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mg979/vim-visual-multi'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/BufOnly.vim'
+"
+"
+"
+" Display
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'markonm/traces.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'miyakogi/conoline.vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'Konfekt/FastFold'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'christoomey/vim-titlecase'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+"
+"
+"
+" Verb
+Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'  
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'kana/vim-textobj-line'
-Plug 'coderifous/textobj-word-column.vim'
+Plug 'christoomey/vim-titlecase'
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/vim-surround' 
+Plug 'vim-scripts/ReplaceWithRegister'
+"
+"
+"
+" Text Objects
 Plug 'bps/vim-textobj-python'
-Plug 'jiangmiao/auto-pairs'
-Plug 'kshenoy/vim-signature'
-Plug 'terryma/vim-expand-region'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'kana/vim-arpeggio'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'rhysd/clever-f.vim'
-Plug 'vim-scripts/BufOnly.vim'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'thalesmello/vim-textobj-multiline-str'
-Plug 'kana/vim-textobj-lastpat'
-Plug 'kana/vim-textobj-datetime'
-Plug 'mattn/vim-textobj-url'
+Plug 'coderifous/textobj-word-column.vim'
 Plug 'h1mesuke/textobj-wiw'
-Plug 'saihoooooooo/vim-textobj-space'
+Plug 'kana/vim-arpeggio'
+Plug 'kana/vim-textobj-datetime'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-lastpat'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-user'
+Plug 'kshenoy/vim-signature'
 Plug 'machakann/vim-textobj-delimited'
-Plug 'vimtaku/vim-textobj-keyvalue'
+Plug 'mattn/vim-textobj-url'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'saaguero/vim-textobj-pastedtext'
+Plug 'saihoooooooo/vim-textobj-space'
+Plug 'terryma/vim-expand-region'
+Plug 'thalesmello/vim-textobj-multiline-str'
+Plug 'vimtaku/vim-textobj-keyvalue'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -325,54 +356,27 @@ nnoremap <kMultiply> zO<CR>
 let g:LanguageClient_serverCommands = {
     \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
     \ }
-
-" TextEdit might fail if hidden is not set.
 set hidden
-
-" Some servers have issues with backup files, see #649.
-
-" Give more space for displaying messages.
 set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
 set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
 set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -395,16 +399,9 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -414,10 +411,6 @@ augroup mygroup
 augroup end
 
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " delete all white space
@@ -454,7 +447,23 @@ onoremap <silent> aM :call TextObjWordBasedColumn("aW")<cr>
 onoremap <silent> im :call TextObjWordBasedColumn("iw")<cr>
 onoremap <silent> iM :call TextObjWordBasedColumn("iW")<cr>
 
+" let g:textobj_delimited_no_default_key_mappings = 1
 
-    
-    
-    
+" xmap id <Plug>(textobj-delimited-forward-i)
+" xmap ad <Plug>(textobj-delimited-forward-a)
+" omap iD<Plug>(textobj-delimited-backward-i)
+" omap aD <Plug>(textobj-delimited-backward-a)
+
+
+xmap Ada <Plug>(textobj-datetime-auto)
+xmap Add <Plug>(textobj-datetime-date)
+xmap Adt <Plug>(textobj-datetime-time)
+xmap Adz <Plug>(textobj-datetime-tz)
+
+omap Ida <Plug>(textobj-datetime-auto)
+omap Idd <Plug>(textobj-datetime-date)
+omap Idf <Plug>(textobj-datetime-full)
+omap Idz <Plug>(textobj-datetime-tz)
+omap Idt <Plug>(textobj-datetime-time)
+xmap Adf <Plug>(textobj-datetime-full)
+
