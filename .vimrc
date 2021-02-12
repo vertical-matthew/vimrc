@@ -9,8 +9,8 @@ set undodir=/home/matt/.vim/undodir
 set undofile
 
 " Disable polyglot for markdown
-let g:polyglot_disabled = ['markdown']
-
+" let g:polyglot_disabled = ['markdown']
+" let g:textobj_wiw_no_default_key_mappings = 1
 " Plugins
 filetype off
 filetype plugin indent off
@@ -52,7 +52,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-unimpaired'
 Plug 'machakann/vim-highlightedyank'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'brooth/far.vim'
 Plug 'miyakogi/conoline.vim'
 Plug 'Chiel92/vim-autoformat'
@@ -65,6 +65,7 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'  
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'kana/vim-textobj-line'
+Plug 'coderifous/textobj-word-column.vim'
 Plug 'bps/vim-textobj-python'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kshenoy/vim-signature'
@@ -75,6 +76,15 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/YankRing.vim'
+Plug 'thalesmello/vim-textobj-multiline-str'
+Plug 'kana/vim-textobj-lastpat'
+Plug 'kana/vim-textobj-datetime'
+Plug 'mattn/vim-textobj-url'
+Plug 'h1mesuke/textobj-wiw'
+Plug 'saihoooooooo/vim-textobj-space'
+Plug 'machakann/vim-textobj-delimited'
+Plug 'vimtaku/vim-textobj-keyvalue'
+Plug 'saaguero/vim-textobj-pastedtext'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -434,4 +444,17 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBrace
 
+let g:skip_default_textobj_word_column_mappings = 1
+xnoremap <silent> am :<C-u>call TextObjWordBasedColumn("aw")<cr>
+xnoremap <silent> aM :<C-u>call TextObjWordBasedColumn("aW")<cr>
+xnoremap <silent> im :<C-u>call TextObjWordBasedColumn("iw")<cr>
+xnoremap <silent> iM :<C-u>call TextObjWordBasedColumn("iW")<cr>
+onoremap <silent> am :call TextObjWordBasedColumn("aw")<cr>
+onoremap <silent> aM :call TextObjWordBasedColumn("aW")<cr>
+onoremap <silent> im :call TextObjWordBasedColumn("iw")<cr>
+onoremap <silent> iM :call TextObjWordBasedColumn("iW")<cr>
 
+
+    
+    
+    
