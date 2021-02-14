@@ -41,9 +41,9 @@ Plug 'airblade/vim-rooter'
 Plug 'godlygeek/tabular'
 Plug 'nvie/vim-flake8'
 Plug 'tmhedberg/simpylfold'
-Plug 'tpope/vim-fugitive'
 Plug 'jupyter-vim/jupyter-vim'
 Plug 'Konfekt/FastFold'
+Plug 'tpope/vim-fugitive'
 Plug 'Chiel92/vim-autoformat'
 "
 "
@@ -70,6 +70,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'matze/vim-move'
 "
 "
 "
@@ -116,6 +117,19 @@ Plug 'saihoooooooo/vim-textobj-space'
 Plug 'terryma/vim-expand-region'
 Plug 'thalesmello/vim-textobj-multiline-str'
 Plug 'vimtaku/vim-textobj-keyvalue'
+
+" New Plugins
+Plug 'AndrewRadev/bufferize.vim'
+Plug 'haya14busa/vim-asterisk'
+Plug 'tommcdo/vim-exchange'
+Plug 'RRethy/vim-illuminate'
+Plug 'lfv89/vim-interestingwords'
+Plug 'AndrewRadev/linediff.vim'
+" Plug 'Valloric/ListToggle'
+Plug 'junegunn/vim-peekaboo'
+Plug 'TaDaa/vimade'
+Plug 'Ron89/thesaurus_query.vim'
+Plug 'farconics/victionary'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -167,7 +181,7 @@ colorscheme gruvbox
 imap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-nnoremap <silent> / :set hlsearch<CR> /
+nnoremap  / :set hlsearch<CR> /
 nnoremap <leader>EOL :set list!<CR> " Toggle tabs and EOL
 nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
 nnoremap ,, <C-w>v          " Vertical split
@@ -192,9 +206,9 @@ cmap cd. lcd %:p:h
 vnoremap < <gv
 vnoremap > >gv 
 
-" change the arrow keys
-nnoremap <Left> <<
-nnoremap <Right> >>
+" nnoremap <Left> <<
+" nnoremap <Right> >>
+" " change the arrow keys
 vnoremap <Left> <gv
 vnoremap <Right> >gv
 nmap <Up> [e
@@ -203,7 +217,7 @@ vmap <Up> [egv
 vmap <Down> ]egv
 
 " Quit
-noremap <leader>q :q<CR>
+noremap qq :q<CR>
 
 " Sets
 runtime! macros/matchit.vim
@@ -307,7 +321,7 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 nmap <leader>s <Plug>(easymotion-overwin-f2)
 
-" Control left and right arrows for limelight and goyo                
+" " Control left and right arrows for limelight and goyo                
 noremap <ESC>[1;5D :Goyo<CR>
 noremap <ESC>[1;5C :Limelight!!<CR>
 
@@ -466,4 +480,90 @@ omap Idf <Plug>(textobj-datetime-full)
 omap Idz <Plug>(textobj-datetime-tz)
 omap Idt <Plug>(textobj-datetime-time)
 xmap Adf <Plug>(textobj-datetime-full)
+
+
+
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+
+set guifont=Consolas:h16
+" This is a sentence
+"here we go
+
+nnoremap \t :Thesaurus 
+
+
+let g:interestingWordsDefaultMappings = 0
+nnoremap <silent> \k :call InterestingWords('n')<cr>
+vnoremap <silent> \k :call InterestingWords('v')<cr>
+nnoremap <silent> \K :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation(1)<cr>
+nnoremap <silent> N :call WordNavigation(0)<cr>
+
+
+
+
+
+" Force to use underline for spell check results
+augroup SpellUnderline
+  autocmd!
+  autocmd ColorScheme *
+    \ highlight SpellBad
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellCap
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellLocal
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellRare
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+augroup END
+
+
+
+set spell spelllang=en_us 
+
+
+let g:victionary#map_defaults = 0
+nmap \d <Plug>(victionary#define_prompt)
+nmap \D <Plug>(victionary#define_under_cursor)
+nmap \s <Plug>(victionary#synonym_prompt)
+nmap \S <Plug>(victionary#synonym_under_cursor)
+
+
+
+
+
 
