@@ -25,44 +25,6 @@ Plug 'preservim/tagbar'
 Plug 'vim-scripts/YankRing.vim'
 "
 "
-"
-" Search
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'dense-analysis/ale'
-Plug 'rhysd/clever-f.vim'
-Plug 'easymotion/vim-easymotion'
-"
-"
-"
-" Python
-Plug 'airblade/vim-rooter'
-Plug 'godlygeek/tabular'
-Plug 'nvie/vim-flake8'
-Plug 'tmhedberg/simpylfold'
-Plug 'jupyter-vim/jupyter-vim'
-Plug 'Konfekt/FastFold'
-Plug 'tpope/vim-fugitive'
-Plug 'Chiel92/vim-autoformat'
-"
-"
-"
-" Prose
-Plug 'ap/vim-css-color'
-Plug 'honza/vim-snippets'
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
-Plug 'reedes/vim-lexical'
-Plug 'reedes/vim-litecorrect'
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-wordy'
-Plug 'tpope/vim-markdown'
-Plug 'vim-scripts/fountain.vim'
-Plug 'tpope/vim-abolish'
-"
-"
-"
-" Other
 Plug 'SirVer/ultisnips'
 Plug 'brooth/far.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -70,7 +32,6 @@ Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'matze/vim-move'
 "
 "
 "
@@ -124,12 +85,16 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'tommcdo/vim-exchange'
 Plug 'RRethy/vim-illuminate'
 Plug 'lfv89/vim-interestingwords'
-Plug 'AndrewRadev/linediff.vim'
+" Plug 'AndrewRadev/linediff.vim'
 " Plug 'Valloric/ListToggle'
 Plug 'junegunn/vim-peekaboo'
 Plug 'TaDaa/vimade'
 Plug 'Ron89/thesaurus_query.vim'
 Plug 'farconics/victionary'
+Plug 'chrisbra/nrrwrgn'
+Plug 't9md/vim-textmanip'
+Plug 'kana/vim-textobj-fold'
+Plug 'tommcdo/vim-nowchangethat'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -186,7 +151,7 @@ nnoremap <leader>EOL :set list!<CR> " Toggle tabs and EOL
 nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
 nnoremap ,, <C-w>v          " Vertical split
 nnoremap ,m <C-w>s         " Horizontal split 
-nnoremap <c-J> <PageDown>  
+" nnoremap <c-J> <PageDown>  
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -206,15 +171,7 @@ cmap cd. lcd %:p:h
 vnoremap < <gv
 vnoremap > >gv 
 
-" nnoremap <Left> <<
-" nnoremap <Right> >>
-" " change the arrow keys
-vnoremap <Left> <gv
-vnoremap <Right> >gv
-nmap <Up> [e
-nmap <Down> ]e
-vmap <Up> [egv
-vmap <Down> ]egv
+
 
 " Quit
 noremap qq :q<CR>
@@ -397,8 +354,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gi <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -564,6 +521,38 @@ nmap \S <Plug>(victionary#synonym_under_cursor)
 
 
 
+" in visual mode, map '\c' to move the cursor to the other end of the selection
+" in our case it has no effect because there is no 'other end' but we need a silly
+" hack like this for our use case: doing 'vic'
+xnoremap \c o
+
+" in operator-pending mode, use 'vic' to define what text to operate on
+omap <silent> \c :normal v\c<CR>
+
+nmap \c <Plug>(textmanip-duplicate-down)
+xmap \C <Plug>(textmanip-duplicate-up)
+nmap \C <Plug>(textmanip-duplicate-up)
+
+xmap <Down> <Plug>(textmanip-move-down)
+xmap <Up> <Plug>(textmanip-move-up)
+xmap <Left> <Plug>(textmanip-move-left)
+xmap <Right> <Plug>(textmanip-move-right)
+
+" toggle insert/replace with \ir
+nmap \ir <Plug>(textmanip-toggle-mode)
+xmap \ir <Plug>(textmanip-toggle-mode)
 
 
 
+
+" " change the arrow keys
+nnoremap <Left> <<
+nnoremap <Right> >>
+nmap <Up> [e
+nmap <Down> ]e
+        " vnoremap <Left> <gv
+        " vnoremap <Right> >gv
+        " vmap <Up> [egv
+        " vmap <Down> ]egv
+
+" set cursorcolumn
