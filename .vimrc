@@ -25,6 +25,44 @@ Plug 'preservim/tagbar'
 Plug 'vim-scripts/YankRing.vim'
 "
 "
+"
+" Search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
+Plug 'rhysd/clever-f.vim'
+Plug 'easymotion/vim-easymotion'
+"
+"
+"
+" Python
+Plug 'airblade/vim-rooter'
+Plug 'godlygeek/tabular'
+Plug 'nvie/vim-flake8'
+Plug 'tmhedberg/simpylfold'
+Plug 'jupyter-vim/jupyter-vim'
+Plug 'Konfekt/FastFold'
+Plug 'tpope/vim-fugitive'
+Plug 'Chiel92/vim-autoformat'
+"
+"
+"
+" Prose
+Plug 'ap/vim-css-color'
+Plug 'honza/vim-snippets'
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+Plug 'reedes/vim-lexical'
+Plug 'reedes/vim-litecorrect'
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-wordy'
+Plug 'tpope/vim-markdown'
+Plug 'vim-scripts/fountain.vim'
+Plug 'tpope/vim-abolish'
+"
+"
+"
+" Other
 Plug 'SirVer/ultisnips'
 Plug 'brooth/far.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -32,6 +70,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'matze/vim-move'
 "
 "
 "
@@ -85,7 +124,7 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'tommcdo/vim-exchange'
 Plug 'RRethy/vim-illuminate'
 Plug 'lfv89/vim-interestingwords'
-" Plug 'AndrewRadev/linediff.vim'
+Plug 'AndrewRadev/linediff.vim'
 " Plug 'Valloric/ListToggle'
 Plug 'junegunn/vim-peekaboo'
 Plug 'TaDaa/vimade'
@@ -354,8 +393,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gi <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
