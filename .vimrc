@@ -28,8 +28,8 @@ Plug 'vim-scripts/YankRing.vim'
 "
 " Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'rhysd/clever-f.vim'
 Plug 'easymotion/vim-easymotion'
@@ -134,6 +134,8 @@ Plug 'chrisbra/nrrwrgn'
 Plug 't9md/vim-textmanip'
 Plug 'kana/vim-textobj-fold'
 Plug 'tommcdo/vim-nowchangethat'
+Plug 'dkarter/bullets.vim'
+Plug 'pseewald/vim-anyfold'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -187,6 +189,7 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap  / :set hlsearch<CR> /
 nnoremap <leader>EOL :set list!<CR> " Toggle tabs and EOL
+nnoremap \e :set list!<CR>
 nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
 nnoremap ,, <C-w>v          " Vertical split
 nnoremap ,m <C-w>s         " Horizontal split 
@@ -231,7 +234,8 @@ set ignorecase
 set nohlsearch
 set incsearch
 set laststatus=2
-set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set matchpairs+=<:> " use % to jump between pairs
 set modelines=0
 set mouse=a         
@@ -327,7 +331,8 @@ noremap <ESC>[1;5C :Limelight!!<CR>
 
 " Function Keys
 noremap <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
-noremap <F2> :TogglePencil<CR>
+" noremap <F2> :TogglePencil<CR>
+noremap <F2> :set list!<CR>
 noremap <F3> :set hlsearch!<CR>
 noremap <F10> :e /home/matt/.vimrc<CR>
 noremap <F4> :YRShow<cr> 
@@ -432,6 +437,10 @@ vnoremap <leader>% :g/^$/d <cr>
 " this works in a visual selection
 nnoremap <leader># :g/^\s*#/d <cr>
 vnoremap <leader># :g/^\s*#/d <cr>
+
+
+
+
 " Load this plugin at this timing
 " to define :Arpeggio, arpeggio#map() and others used later.
 " packadd vim-arpeggio
