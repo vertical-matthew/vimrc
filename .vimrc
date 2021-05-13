@@ -136,6 +136,8 @@ Plug 'kana/vim-textobj-fold'
 Plug 'tommcdo/vim-nowchangethat'
 Plug 'dkarter/bullets.vim'
 Plug 'pseewald/vim-anyfold'
+Plug 'keith/swift.vim'
+" Plug 'itchyny/vim-cursorword'
 call plug#end()
 
 " sudo apt-get install xsel
