@@ -606,3 +606,6 @@ nmap <Down> ]e
         " vmap <Down> ]egv
 
 " set cursorcolumn
+"
+"
+" test
