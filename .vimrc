@@ -137,6 +137,7 @@ Plug 'tommcdo/vim-nowchangethat'
 Plug 'dkarter/bullets.vim'
 Plug 'pseewald/vim-anyfold'
 Plug 'keith/swift.vim'
+Plug 'reedes/vim-wheel'
 " Plug 'itchyny/vim-cursorword'
 call plug#end()
 
@@ -416,7 +417,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+ " autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 augroup mygroup
@@ -607,5 +608,13 @@ nmap <Down> ]e
 
 " set cursorcolumn
 "
-"
-" test
+
+
+
+augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord ctermfg=Yellow ctermbg=DarkGrey 
+    " autocmd VimEnter * hi illuminatedWord ctermfg=Grey ctermbg=Red 
+augroup END
+
+" highlight CursorLine ctermfg=Grey ctermbg=Red cterm=bold guifg=white guibg=yellow gui=bold
