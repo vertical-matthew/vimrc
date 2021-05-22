@@ -621,3 +621,4 @@ augroup illuminate_augroup
 augroup END
 
 " highlight CursorLine ctermfg=Grey ctermbg=Red cterm=bold guifg=white guibg=yellow gui=bold
+" test
