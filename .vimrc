@@ -138,6 +138,7 @@ Plug 'dkarter/bullets.vim'
 Plug 'pseewald/vim-anyfold'
 Plug 'keith/swift.vim'
 Plug 'reedes/vim-wheel'
+Plug 'dyng/ctrlsf.vim'
 " Plug 'itchyny/vim-cursorword'
 call plug#end()
 
@@ -298,8 +299,10 @@ autocmd FileType python inoremap """ """"""<left><left><left>
 
 " Plugin mappings
 nnoremap <silent> // :BLines!<CR>
+nnoremap <silent> <Leader>\ :CtrlSF<CR>
+nnoremap <silent> \\ :Lines<CR>
 nnoremap <silent> <C-h> :History<CR>
-nnoremap <silent> <C-f> :Rg<CR>
+nnoremap <silent> ?? :Rg<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <Leader>' :Marks<CR>
 nnoremap <silent> <Leader>/ :Files<CR>
