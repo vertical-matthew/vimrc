@@ -16,7 +16,7 @@ set undolevels=10000
 set nobackup
 set nowritebackup
 set noswapfile
-set undodir=/home/matt/.vim/undodir
+set undodir=~/.vim/undodir
 set undofile
 
 
