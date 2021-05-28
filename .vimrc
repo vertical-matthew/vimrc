@@ -1,4 +1,15 @@
-" Initial Undo settings
+" Let's save undo info!
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undodir")
+    call mkdir($HOME."/.vim/undodir", "", 0700)
+endif
+
+
+
+
+"Initial Undo settings
 set nocompatible
 set history=10000
 set undolevels=10000
@@ -7,6 +18,7 @@ set nowritebackup
 set noswapfile
 set undodir=/home/matt/.vim/undodir
 set undofile
+
 
 
 let g:textobj_datetime_no_default_key_mappings = 1
