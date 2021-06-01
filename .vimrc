@@ -153,6 +153,12 @@ Plug 'reedes/vim-wheel'
 Plug 'dyng/ctrlsf.vim'
 " Plug 'itchyny/vim-cursorword'
 Plug 'houtsnip/vim-emacscommandline'
+Plug 'sheerun/vim-polyglot'
+Plug 'wincent/ferret'
+
+
+
+
 call plug#end()
 
 " sudo apt-get install xsel
