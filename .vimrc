@@ -317,7 +317,7 @@ autocmd FileType python map <buffer>  <leader>, :w<CR>:exec '!python3' shellesca
 autocmd FileType python inoremap """ """"""<left><left><left>
 
 " Plugin mappings
-nnoremap <silent> // :BLines!<CR>
+nnoremap <silent> // :BLines<CR>
 nnoremap <silent> <Leader>\ :CtrlSF<CR>
 nnoremap <silent> \\ :Lines<CR>
 nnoremap <silent> <C-h> :History<CR>
@@ -652,3 +652,10 @@ if has("autocmd")
 au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 endif
 
+
+
+" Smart way to move between panes
+map <M-up> <C-w><up>
+map <M-down> <C-w><down>
+map <M-left> <C-w><left>
+map <M-right> <C-w><right>
