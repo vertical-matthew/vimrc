@@ -154,11 +154,13 @@ Plug 'dyng/ctrlsf.vim'
 " Plug 'itchyny/vim-cursorword'
 Plug 'houtsnip/vim-emacscommandline'
 Plug 'sheerun/vim-polyglot'
+
+
 Plug 'wincent/ferret'
-
-
-
-
+Plug 'justinmk/vim-sneak'
+Plug 'andrewradev/tagalong.vim'
+Plug 'mattn/emmet-vim'
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -659,3 +661,10 @@ map <M-up> <C-w><up>
 map <M-down> <C-w><down>
 map <M-left> <C-w><left>
 map <M-right> <C-w><right>
+
+
+"(R)eplace all
+nnoremap <leader>rr yiw:%s/\<<C-r>"\>//g<left><left>
+
+
+
