@@ -161,6 +161,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'andrewradev/tagalong.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " sudo apt-get install xsel
