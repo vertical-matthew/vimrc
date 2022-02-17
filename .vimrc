@@ -162,6 +162,7 @@ Plug 'andrewradev/tagalong.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'axlebedev/footprints'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -667,5 +668,14 @@ map <M-right> <C-w><right>
 "(R)eplace all
 nnoremap <leader>rr yiw:%s/\<<C-r>"\>//g<left><left>
 
+let g:footprintsColor = '#6eabf0'
+let g:footprintsTermColor = '208'
+let g:footprintsEasingFunction = 'linear'
+let g:footprintsHistoryDepth = 10
+let g:footprintsExcludeFiletypes = ['magit', 'nerdtree', 'diff']
+let g:footprintsEnabledByDefault = 0
+let g:footprintsOnCurrentLine = 0
 
 
+
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
