@@ -6,8 +6,6 @@ if !isdirectory($HOME."/.nvim/undodir")
     call mkdir($HOME."/.nvim/undodir", "", 0700)
 endif
 
-
-
 "Initial Undo settings
 set nocompatible
 set history=10000
@@ -34,7 +32,7 @@ set laststatus=2
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set matchpairs+=<:> " use % to jump between pairs
 set modelines=0
-set mouse=a         
+set mouse=a        
 set noshiftround
 set nowrap
 set number relativenumber
@@ -57,7 +55,6 @@ set textwidth=79
 set textwidth=0
 set wrapmargin=0
 
-
 filetype off
 filetype plugin indent off
 call plug#begin('~/.local/share/nvim/plugged')
@@ -75,7 +72,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'rhysd/clever-f.vim'
 " Plug 'easymotion/vim-easymotion'
-Plug 'phaazon/hop.nvim' 
+Plug 'phaazon/hop.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'BurntSushi/ripgrep'
@@ -135,7 +132,7 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'  
 Plug 'christoomey/vim-titlecase'
 Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
 "
 "
@@ -174,28 +171,21 @@ Plug 'reedes/vim-wheel'
 Plug 'dyng/ctrlsf.vim'
 Plug 'houtsnip/vim-emacscommandline'
 Plug 'sheerun/vim-polyglot'
-
-
 Plug 'justinmk/vim-sneak'
 Plug 'andrewradev/tagalong.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'terryma/vim-multiple-cursors'
-
 Plug 'glepnir/dashboard-nvim'
 
 call plug#end()
 
-
 filetype plugin indent on
 syntax on
- 
-
 
 " colorscheme gruvbox
 " colorscheme melange
 colorscheme nord
-
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -203,39 +193,31 @@ noremap qq :q<CR>
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded .VIMRC"
 nnoremap zz :update<cr>
 noremap <c-s> :update<cr>
-
 imap jk <Esc>
-nnoremap ,% <C-w>v          " Vertical split
-nnoremap ," <C-w>s         " Horizontal split 
+nnoremap <Leader>9 <C-w>v          " Vertical split
+nnoremap <Leader>8 <C-w>s         " Horizontal split
+nnoremap <Leader><Leader>h <C-w>v          " Vertical split
+nnoremap <Leader><Leader>v <C-w>s         " Horizontal split
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
-vnoremap > >gv 
-
+vnoremap > >gv
 nnoremap <silent> // :BLines<CR>
-
-" " Control left and right arrows for limelight and goyo                
-noremap <ESC>[1;5D :Goyo<CR>
-noremap <ESC>[1;5C :Limelight!!<CR>
+noremap <Leader>1 :Goyo<CR>
+noremap <Leader>2 :Limelight!!<CR>
+noremap <Leader><Leader>g :Goyo<CR>
+noremap <Leader><Leader>l :Limelight!!<CR>
+noremap <Leader><Leader>f :Goyo<CR> :Limelight!!<CR>
 
 noremap <F5> :NERDTreeToggle<CR> <c-w><c-p>
 noremap <F6> :UndotreeToggle<CR>
+noremap <F7> :YRShow<CR>
 noremap <F8> :TagbarToggle<CR>
-
-
-
-" use keypad plus and minus etc to open and close folds
-" note that numlock needs to be off for this to work
-nnoremap <kPlus> zR<CR>
-nnoremap <kMinus> zM<CR>
-nnoremap <kDivide> zC<CR>
-nnoremap <kMultiply> zO<CR>
 
 let g:yankring_max_history = 1000
 let g:yankring_min_element_length = 2
 let g:yankring_max_display = 70
 
-
-set spell spelllang=en_us 
+set spell spelllang=en_us
 
 " " change the arrow keys
 nnoremap <Left> <<
@@ -243,14 +225,9 @@ nnoremap <Right> >>
 nmap <Up> [e
 nmap <Down> ]e
 
-
-
 nnoremap <leader>x :b#<CR>
 
-
 set termguicolors
-
-
 
 let g:LanguageClient_serverCommands = {
     \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
@@ -312,44 +289,21 @@ augroup end
 nmap <leader>qf  <Plug>(coc-fix-current)
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
-
-" Python files
-" autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-" autocmd FileType python imap <buffer>  <leader>, <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-" autocmd FileType python map <buffer>  <leader>, :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-" autocmd BufWritePost *.py call flake8#Flake8()
-" autocmd FileType python inoremap """ """"""<left><left><left>
-
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
-
-
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-
-" nmap <Leader>L <Plug>(easymotion-overwin-line)
-" nmap <Leader>f <Plug>(easymotion-overwin-f)
-" nmap <Leader>w <Plug>(easymotion-overwin-w)
-" nmap <leader>s <Plug>(easymotion-overwin-f2)
-
-
 lua require'hop'.setup()
 
-
-nmap <Leader>r :HopLine<CR>
+nmap <Leader>a :HopLine<CR>
 nmap <Leader>w :HopWord<CR>
-nmap <Leader>p :HopPattern<CR>
-
-
-
-
-
+nmap <Leader>pat :HopPattern<CR>
+nmap <Leader><Leader>/ :HopPattern<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -357,9 +311,25 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-
-
-
-
 " Default value is clap
 let g:dashboard_default_executive ='fzf'
+" replace current word and repeat with . n will skip R goes backwards
+nnoremap <Leader><Leader>r *``cgn
+nnoremap <Leader><Leader>R #``cgN
+
+" forward and back tabs
+nnoremap <TAB> :bn<CR>
+nnoremap <S-TAB> :bp<CR>
+
+" go to previous/next jump.  <C-i> works but shift backspace does not
+nnoremap <Backspace> <C-o>
+nnoremap ,<Backspace> <C-i>
+
+" search forward for word under cursor.  use n and N
+nnoremap <Leader><Leader><Leader> *``
+nnoremap Y y$
+inoremap jj <ESC>
+nnoremap <Leader>yr :YRShow<CR>
+nnoremap <Leader>nt :NERDTreeToggle<CR> <c-w><c-p>
+nnoremap <Leader>un :UndotreeToggle<CR> <c-w><c-p>
+nnoremap <Leader>t :TagbarToggle<CR> <c-w><c-p>
