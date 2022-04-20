@@ -32,7 +32,7 @@ set laststatus=2
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set matchpairs+=<:> " use % to jump between pairs
 set modelines=0
-set mouse=a        
+set mouse=a         
 set noshiftround
 set nowrap
 set number relativenumber
@@ -72,12 +72,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'rhysd/clever-f.vim'
 " Plug 'easymotion/vim-easymotion'
-Plug 'phaazon/hop.nvim'
+Plug 'phaazon/hop.nvim' 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'BurntSushi/ripgrep'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sharkdp/fd'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'romgrk/barbar.nvim'
@@ -132,7 +135,7 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'  
 Plug 'christoomey/vim-titlecase'
 Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround' 
 Plug 'vim-scripts/ReplaceWithRegister'
 "
 "
@@ -170,22 +173,24 @@ Plug 'keith/swift.vim'
 Plug 'reedes/vim-wheel'
 Plug 'dyng/ctrlsf.vim'
 Plug 'houtsnip/vim-emacscommandline'
-Plug 'sheerun/vim-polyglot'
+Plug 'sheetun/vim-polyglot'
 Plug 'justinmk/vim-sneak'
 Plug 'andrewradev/tagalong.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'glepnir/dashboard-nvim'
+Plug 'wfxr/minimap.vim'
+" Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
 filetype plugin indent on
 syntax on
 
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme melange
-colorscheme nord
+" colorscheme nord
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -195,16 +200,16 @@ nnoremap zz :update<cr>
 noremap <c-s> :update<cr>
 imap jk <Esc>
 nnoremap <Leader>9 <C-w>v          " Vertical split
-nnoremap <Leader>8 <C-w>s         " Horizontal split
+nnoremap <Leader>8 <C-w>s         " Horizontal split 
 nnoremap <Leader><Leader>h <C-w>v          " Vertical split
-nnoremap <Leader><Leader>v <C-w>s         " Horizontal split
+nnoremap <Leader><Leader>v <C-w>s         " Horizontal split 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
-vnoremap > >gv
+vnoremap > >gv 
 nnoremap <silent> // :BLines<CR>
-noremap <Leader>1 :Goyo<CR>
+noremap <Leader>1 :Goyo<CR> 
 noremap <Leader>2 :Limelight!!<CR>
-noremap <Leader><Leader>g :Goyo<CR>
+noremap <Leader><Leader>g :Goyo<CR> 
 noremap <Leader><Leader>l :Limelight!!<CR>
 noremap <Leader><Leader>f :Goyo<CR> :Limelight!!<CR>
 
@@ -212,19 +217,23 @@ noremap <F5> :NERDTreeToggle<CR> <c-w><c-p>
 noremap <F6> :UndotreeToggle<CR>
 noremap <F7> :YRShow<CR>
 noremap <F8> :TagbarToggle<CR>
+noremap <Leader>5 :NERDTreeToggle<CR><c-w><c-p>
+noremap <Leader>6 :UndotreeToggle<CR>
+noremap <Leader>7 :YRShow<CR>
+noremap <Leader>8 :TagbarToggle<CR>
 
 let g:yankring_max_history = 1000
 let g:yankring_min_element_length = 2
 let g:yankring_max_display = 70
 
-set spell spelllang=en_us
+set spell spelllang=en_us 
 
 " " change the arrow keys
 nnoremap <Left> <<
 nnoremap <Right> >>
 nmap <Up> [e
 nmap <Down> ]e
-
+" go to the last location
 nnoremap <leader>x :b#<CR>
 
 set termguicolors
@@ -290,6 +299,8 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <Leader>run :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <Leader>0 :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
@@ -320,16 +331,64 @@ nnoremap <Leader><Leader>R #``cgN
 " forward and back tabs
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
-
+" hi my wife is beautiful  
+"
 " go to previous/next jump.  <C-i> works but shift backspace does not
 nnoremap <Backspace> <C-o>
 nnoremap ,<Backspace> <C-i>
 
 " search forward for word under cursor.  use n and N
-nnoremap <Leader><Leader><Leader> *``
+" nnoremap <Leader><Leader><Leader> *``
+nnoremap <Leader>cursor *`` 
 nnoremap Y y$
 inoremap jj <ESC>
 nnoremap <Leader>yr :YRShow<CR>
-nnoremap <Leader>nt :NERDTreeToggle<CR> <c-w><c-p>
+nnoremap <Leader>nt :NERDTreeToggle %<CR> <c-w><c-p>
 nnoremap <Leader>un :UndotreeToggle<CR> <c-w><c-p>
-nnoremap <Leader>t :TagbarToggle<CR> <c-w><c-p>
+nnoremap <Leader>tg :TagbarToggle<CR> <c-w><c-p>
+nnoremap <Leader><Leader><Leader> :NERDTreeToggle<CR> :TagbarToggle<CR> 
+
+nnoremap ; :
+vnoremap ; :
+
+nmap p "0p
+nmap P "0P
+" surround the current word in quotes
+nmap <Leader>' ysiw'
+nnoremap <Leader><Leader>t :terminal<CR>
+
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+
+nnoremap <Leader>m :MinimapToggle<CR>
+
+" make sure to alias ctags in mac
+" alias ctags="`brew --prefix`/bin/ctags"
+" set g:tagbar_ctags_bin
+"let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+
+" faster navigation
+noremap K     {
+noremap J     }
+noremap H     ^
+noremap L     $
+
+" insert mode navigation
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+inoremap <C-K> <ESC>{i
+inoremap <C-J> <ESC>}i
+inoremap <C-H> <ESC>^i
+inoremap <C-L> <ESC>$i
+
+" quicker folds, open and close
+nnoremap <Leader><Leader>c zM
+nnoremap <Leader><Leader>o zR
+
+
+
+
