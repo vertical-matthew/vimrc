@@ -135,6 +135,7 @@ Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'  
 Plug 'christoomey/vim-titlecase'
+Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-surround' 
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -174,7 +175,7 @@ Plug 'keith/swift.vim'
 Plug 'reedes/vim-wheel'
 Plug 'dyng/ctrlsf.vim'
 Plug 'houtsnip/vim-emacscommandline'
-Plug 'sheetun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'justinmk/vim-sneak'
 Plug 'andrewradev/tagalong.vim'
 Plug 'mattn/emmet-vim'
@@ -348,8 +349,6 @@ nnoremap <Leader><Leader><Leader> :NERDTreeToggle<CR> :TagbarToggle<CR>
 nnoremap ; :
 vnoremap ; :
 
-nmap p "0p
-nmap P "0P
 " surround the current word in quotes
 nmap <Leader>' ysiw'
 nmap <Leader>" ysiw"

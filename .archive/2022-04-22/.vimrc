@@ -38,13 +38,13 @@ Plug 'vim-scripts/YankRing.vim'
 "
 "
 " Search
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'rhysd/clever-f.vim'
 Plug 'easymotion/vim-easymotion'
+"
 "
 "
 " Python
@@ -60,6 +60,10 @@ Plug 'Chiel92/vim-autoformat'
 "
 "
 " Prose
+Plug 'ap/vim-css-color'
+Plug 'honza/vim-snippets'
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
@@ -70,6 +74,8 @@ Plug 'tpope/vim-abolish'
 "
 "
 " Other
+Plug 'SirVer/ultisnips'
+Plug 'brooth/far.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-repeat'
@@ -106,6 +112,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'bps/vim-textobj-python'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'h1mesuke/textobj-wiw'
+Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-textobj-datetime'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-lastpat'
@@ -129,7 +136,11 @@ Plug 'tommcdo/vim-exchange'
 Plug 'RRethy/vim-illuminate'
 Plug 'lfv89/vim-interestingwords'
 Plug 'AndrewRadev/linediff.vim'
+" Plug 'Valloric/ListToggle'
 Plug 'junegunn/vim-peekaboo'
+Plug 'TaDaa/vimade'
+Plug 'Ron89/thesaurus_query.vim'
+Plug 'farconics/victionary'
 Plug 'chrisbra/nrrwrgn'
 Plug 't9md/vim-textmanip'
 Plug 'kana/vim-textobj-fold'
@@ -139,20 +150,25 @@ Plug 'pseewald/vim-anyfold'
 Plug 'keith/swift.vim'
 Plug 'reedes/vim-wheel'
 Plug 'dyng/ctrlsf.vim'
+" Plug 'itchyny/vim-cursorword'
 Plug 'houtsnip/vim-emacscommandline'
 Plug 'sheerun/vim-polyglot'
 
 
+Plug 'wincent/ferret'
 Plug 'justinmk/vim-sneak'
 Plug 'andrewradev/tagalong.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'axlebedev/footprints'
 
 
 
+" " Plug 'bagrat/vim-buffet'
+" Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'romgrk/barbar.nvim'
 
-Plug 'wfxr/minimap.vim'
 call plug#end()
 
 " sudo apt-get install xsel
@@ -160,6 +176,42 @@ call plug#end()
 filetype plugin indent on
 syntax on
  
+" Force to use underline for spell check results
+augroup SpellUnderline
+  autocmd!
+  autocmd ColorScheme *
+    \ highlight SpellBad
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellCap
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellLocal
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellRare
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+augroup END
 
 " Remaps!
 :ab matty Matthew Jay Kreidler
@@ -299,6 +351,10 @@ let g:jupyter_mapkeys = 0
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+nmap <leader>s <Plug>(easymotion-overwin-f2)
 
 " " Control left and right arrows for limelight and goyo                
 noremap <ESC>[1;5D :Goyo<CR>
@@ -420,6 +476,11 @@ vnoremap <leader># :g/^\s*#/d <cr>
 
 
 
+" Load this plugin at this timing
+" to define :Arpeggio, arpeggio#map() and others used later.
+" packadd vim-arpeggio
+call arpeggio#map('i', '', 0, 'jkl', 'arpeggio')
+call arpeggio#map('i', '', 0, 'kl', 'testing')
 
 let g:yankring_max_history = 1000
 let g:yankring_min_element_length = 2
@@ -440,7 +501,12 @@ onoremap <silent> aM :call TextObjWordBasedColumn("aW")<cr>
 onoremap <silent> im :call TextObjWordBasedColumn("iw")<cr>
 onoremap <silent> iM :call TextObjWordBasedColumn("iW")<cr>
 
+" let g:textobj_delimited_no_default_key_mappings = 1
 
+" xmap id <Plug>(textobj-delimited-forward-i)
+" xmap ad <Plug>(textobj-delimited-forward-a)
+" omap iD<Plug>(textobj-delimited-backward-i)
+" omap aD <Plug>(textobj-delimited-backward-a)
 
 
 xmap Ada <Plug>(textobj-datetime-auto)
@@ -473,20 +539,68 @@ set guifont=Consolas:h16
 " This is a sentence
 "here we go
 
+nnoremap \t :Thesaurus 
+
+
+let g:interestingWordsDefaultMappings = 0
+nnoremap <silent> \k :call InterestingWords('n')<cr>
+vnoremap <silent> \k :call InterestingWords('v')<cr>
+nnoremap <silent> \K :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation(1)<cr>
+nnoremap <silent> N :call WordNavigation(0)<cr>
 
 
 
 
 
-
-
-
+" Force to use underline for spell check results
+augroup SpellUnderline
+  autocmd!
+  autocmd ColorScheme *
+    \ highlight SpellBad
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellCap
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellLocal
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellRare
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+augroup END
 
 
 
 set spell spelllang=en_us 
 
 
+let g:victionary#map_defaults = 0
+nmap \d <Plug>(victionary#define_prompt)
+nmap \D <Plug>(victionary#define_under_cursor)
+nmap \s <Plug>(victionary#synonym_prompt)
+nmap \S <Plug>(victionary#synonym_under_cursor)
 
 
 
@@ -529,6 +643,36 @@ nmap <Down> ]e
 
 
 
+augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord ctermfg=Yellow ctermbg=DarkGrey 
+    " autocmd VimEnter * hi illuminatedWord ctermfg=Grey ctermbg=Red 
+augroup END
+
+" highlight CursorLine ctermfg=Grey ctermbg=Red cterm=bold guifg=white guibg=yellow gui=bold
+" test
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertEnter,InsertChange *
+\ if v:insertmode == 'i' | 
+\   silent execute '!echo -ne "\e[6 q"' | redraw! |
+\ elseif v:insertmode == 'r' |
+\   silent execute '!echo -ne "\e[4 q"' | redraw! |
+\ endif
+au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
+
+
+" Smart way to move between panes
+map <M-up> <C-w><up>
+map <M-down> <C-w><down>
+map <M-left> <C-w><left>
+map <M-right> <C-w><right>
+
+
+
+
 
 
 
@@ -536,122 +680,22 @@ nmap <Down> ]e
 "(R)eplace all
 nnoremap <leader>rr yiw:%s/\<<C-r>"\>//g<left><left>
 
+let g:footprintsColor = '#6eabf0'
+let g:footprintsTermColor = '208'
+let g:footprintsEasingFunction = 'linear'
+let g:footprintsHistoryDepth = 10
+let g:footprintsExcludeFiletypes = ['magit', 'nerdtree', 'diff']
+let g:footprintsEnabledByDefault = 0
+let g:footprintsOnCurrentLine = 0
+
+
 
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 
 
-" faster navigation
-noremap K     {
-noremap J     }
-" back and forth with shift H and L
-nnoremap H     <c-o>
-nnoremap L     <c-i>
+ noremap <Tab> :bn<CR>
+" noremap <S-Tab> :bp<CR>
+" noremap <Leader><Tab> :Bw<CR>
+" noremap <Leader><S-Tab> :Bw!<CR>
+" noremap <C-t> :tabnew split<CR>
 
-" insert mode navigation
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-" fast insert mode navigation
-inoremap <C-K> <ESC>{i
-inoremap <C-J> <ESC>}i
-inoremap <C-H> <ESC>^i
-inoremap <C-L> <ESC>$i
-
-" quicker folds, open and close
-nnoremap <Leader><Leader>c zM
-nnoremap <Leader><Leader>o zR
-
-" faster up and down with ctrl j and k
-nnoremap <c-j> <c-f>
-nnoremap <c-k> <c-b>
-
-" get to beginning and end of line ctrl H and L
-nnoremap <C-H> ^
-nnoremap <C-L> $
-
-
-
-
-
-" surround the current word in quotes
-nmap <Leader>' ysiw'
-nmap <Leader>" ysiw"
-nnoremap <Leader><Leader>t :terminal<CR>
-
-
-
-
-nnoremap ; :
-vnoremap ; :
-
-
-
-
-
-nnoremap <Leader>cursor *`` 
-nnoremap Y y$
-inoremap jj <ESC>
-nnoremap <Leader>yr :YRShow<CR>
-nnoremap <Leader>nt :NERDTreeToggle %<CR> <c-w><c-p>
-nnoremap <Leader>un :UndotreeToggle<CR> <c-w><c-p>
-nnoremap <Leader>tg :TagbarToggle<CR> <c-w><c-p>
-nnoremap <Leader><Leader><Leader> :NERDTreeToggle<CR> :TagbarToggle<CR> 
-
-
-
-
-
-nnoremap <Leader><Leader>r *``cgn
-nnoremap <Leader><Leader>R #``cgN
-
-" forward and back tabs
-nnoremap <TAB> :bn<CR>
-nnoremap <S-TAB> :bp<CR>
-" hi my wife is beautiful  
-"
-"
-
-nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-
-
-
-
-
-
-
-
-nmap <Leader>a <Plug>(easymotion-overwin-line)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-nmap <leader>s <Plug>(easymotion-overwin-f2)
-
-
-
-
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-
-nnoremap <Leader>m :MinimapToggle<CR>
-
-
-
-
-noremap <F5> :NERDTreeToggle<CR> <c-w><c-p>
-noremap <F6> :UndotreeToggle<CR>
-noremap <F7> :YRShow<CR>
-noremap <F8> :TagbarToggle<CR>
-noremap <Leader>5 :NERDTreeToggle<CR><c-w><c-p>
-noremap <Leader>6 :UndotreeToggle<CR>
-noremap <Leader>7 :YRShow<CR>
-noremap <Leader>8 :TagbarToggle<CR>
-
-
-
-
-nnoremap <Leader><Leader>h <C-w>v          " Vertical split
-nnoremap <Leader><Leader>v <C-w>s         " Horizontal split 
