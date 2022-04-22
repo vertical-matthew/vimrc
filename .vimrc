@@ -6,9 +6,6 @@ if !isdirectory($HOME."/.vim/undodir")
     call mkdir($HOME."/.vim/undodir", "", 0700)
 endif
 
-
-
-
 "Initial Undo settings
 set nocompatible
 set history=10000
@@ -19,13 +16,8 @@ set noswapfile
 set undodir=~/.vim/undodir
 set undofile
 
-
-
 let g:textobj_datetime_no_default_key_mappings = 1
 
-" Disable polyglot for markdown
-" let g:polyglot_disabled = ['markdown']
-" let g:textobj_wiw_no_default_key_mappings = 1
 " Plugins
 filetype off
 filetype plugin indent off
@@ -150,8 +142,6 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'terryma/vim-multiple-cursors'
 
 
-
-
 Plug 'wfxr/minimap.vim'
 call plug#end()
 
@@ -164,38 +154,27 @@ syntax on
 " Remaps!
 :ab matty Matthew Jay Kreidler
 colorscheme gruvbox
-
 imap jk <Esc>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap  / :set hlsearch<CR> /
 nnoremap <leader>EOL :set list!<CR> " Toggle tabs and EOL
 nnoremap \e :set list!<CR>
-nnoremap <leader>vimrc :tabe $MYVIMRC<cr>
-nnoremap ,, <C-w>v          " Vertical split
-nnoremap ,m <C-w>s         " Horizontal split 
-" nnoremap <c-J> <PageDown>  
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>x :b#<CR>
 nmap Y y$
-
 " Add a new line, then go back to normal mode
 nnoremap <leader>o mzo<Esc>k`z
 nnoremap <leader>O mzO<Esc>j`z
-
 " Change Working Directory to that of the current file
 cmap cwd lcd %:p:h
 cmap cd. lcd %:p:h
-
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv 
-
-
-
 " Quit
 noremap qq :q<CR>
 
@@ -243,29 +222,11 @@ set textwidth=79
 set textwidth=0
 set wrapmargin=0
 
+
 " Saving
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded .VIMRC"
 nnoremap zz :update<cr>
 noremap <c-s> :update<cr>
-
-" Filetype-specific
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-function! <SID>StripTrailingWhitespaces()
-  if !&binary && &filetype != 'diff'
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-  endif
-endfun
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd,txt call pencil#init({'wrap': 'soft'})
-                            \ | call lexical#init()
-                            \ | call litecorrect#init()
-augroup END
 
 " Python files
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
@@ -411,16 +372,12 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " this works in a visual selection
 nnoremap <leader>% :g/^$/d <cr>
 vnoremap <leader>% :g/^$/d <cr>
+nnoremap <leader>- :g/^$/d <cr>
 
 " delete all python comments, lines where the first character is #
 " this works in a visual selection
 nnoremap <leader># :g/^\s*#/d <cr>
 vnoremap <leader># :g/^\s*#/d <cr>
-
-
-
-
-
 let g:yankring_max_history = 1000
 let g:yankring_min_element_length = 2
 let g:yankring_max_display = 70
@@ -439,25 +396,16 @@ onoremap <silent> am :call TextObjWordBasedColumn("aw")<cr>
 onoremap <silent> aM :call TextObjWordBasedColumn("aW")<cr>
 onoremap <silent> im :call TextObjWordBasedColumn("iw")<cr>
 onoremap <silent> iM :call TextObjWordBasedColumn("iW")<cr>
-
-
-
-
 xmap Ada <Plug>(textobj-datetime-auto)
 xmap Add <Plug>(textobj-datetime-date)
 xmap Adt <Plug>(textobj-datetime-time)
 xmap Adz <Plug>(textobj-datetime-tz)
-
 omap Ida <Plug>(textobj-datetime-auto)
 omap Idd <Plug>(textobj-datetime-date)
 omap Idf <Plug>(textobj-datetime-full)
 omap Idz <Plug>(textobj-datetime-tz)
 omap Idt <Plug>(textobj-datetime-time)
 xmap Adf <Plug>(textobj-datetime-full)
-
-
-
-
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -467,29 +415,10 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
-
-
 set guifont=Consolas:h16
 " This is a sentence
 "here we go
-
-
-
-
-
-
-
-
-
-
-
-
 set spell spelllang=en_us 
-
-
-
-
-
 " in visual mode, map '\c' to move the cursor to the other end of the selection
 " in our case it has no effect because there is no 'other end' but we need a silly
 " hack like this for our use case: doing 'vic'
@@ -510,10 +439,6 @@ xmap <Right> <Plug>(textmanip-move-right)
 " toggle insert/replace with \ir
 nmap \ir <Plug>(textmanip-toggle-mode)
 xmap \ir <Plug>(textmanip-toggle-mode)
-
-
-
-
 " " change the arrow keys
 nnoremap <Left> <<
 nnoremap <Right> >>
@@ -526,13 +451,6 @@ nmap <Down> ]e
 
 " set cursorcolumn
 "
-
-
-
-
-
-
-
 "(R)eplace all
 nnoremap <leader>rr yiw:%s/\<<C-r>"\>//g<left><left>
 
@@ -569,26 +487,12 @@ nnoremap <c-k> <c-b>
 " get to beginning and end of line ctrl H and L
 nnoremap <C-H> ^
 nnoremap <C-L> $
-
-
-
-
-
 " surround the current word in quotes
 nmap <Leader>' ysiw'
 nmap <Leader>" ysiw"
 nnoremap <Leader><Leader>t :terminal<CR>
-
-
-
-
 nnoremap ; :
 vnoremap ; :
-
-
-
-
-
 nnoremap <Leader>cursor *`` 
 nnoremap Y y$
 inoremap jj <ESC>
@@ -597,11 +501,6 @@ nnoremap <Leader>nt :NERDTreeToggle %<CR> <c-w><c-p>
 nnoremap <Leader>un :UndotreeToggle<CR> <c-w><c-p>
 nnoremap <Leader>tg :TagbarToggle<CR> <c-w><c-p>
 nnoremap <Leader><Leader><Leader> :NERDTreeToggle<CR> :TagbarToggle<CR> 
-
-
-
-
-
 nnoremap <Leader><Leader>r *``cgn
 nnoremap <Leader><Leader>R #``cgN
 
@@ -617,30 +516,14 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-
-
-
-
-
-
-
-
 nmap <Leader>a <Plug>(easymotion-overwin-line)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 nmap <leader>s <Plug>(easymotion-overwin-f2)
-
-
-
-
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
 
 nnoremap <Leader>m :MinimapToggle<CR>
-
-
-
-
 noremap <F5> :NERDTreeToggle<CR> <c-w><c-p>
 noremap <F6> :UndotreeToggle<CR>
 noremap <F7> :YRShow<CR>
@@ -649,9 +532,22 @@ noremap <Leader>5 :NERDTreeToggle<CR><c-w><c-p>
 noremap <Leader>6 :UndotreeToggle<CR>
 noremap <Leader>7 :YRShow<CR>
 noremap <Leader>8 :TagbarToggle<CR>
-
-
-
-
 nnoremap <Leader><Leader>h <C-w>v          " Vertical split
 nnoremap <Leader><Leader>v <C-w>s         " Horizontal split 
+
+
+" folds
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
+
+
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
+
+let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
+let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
+let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
