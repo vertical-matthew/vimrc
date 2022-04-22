@@ -1,3 +1,4 @@
+
 " Let's save undo info!
 if !isdirectory($HOME."/.nvim")
     call mkdir($HOME."/.nvim", "", 0770)
@@ -173,7 +174,7 @@ Plug 'keith/swift.vim'
 Plug 'reedes/vim-wheel'
 Plug 'dyng/ctrlsf.vim'
 Plug 'houtsnip/vim-emacscommandline'
-Plug 'sheerun/vim-polyglot'
+Plug 'sheetun/vim-polyglot'
 Plug 'justinmk/vim-sneak'
 Plug 'andrewradev/tagalong.vim'
 Plug 'mattn/emmet-vim'
@@ -333,10 +334,6 @@ nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
 " hi my wife is beautiful  
 "
-" go to previous/next jump.  <C-i> works but shift backspace does not
-nnoremap <Backspace> <C-o>
-nnoremap ,<Backspace> <C-i>
-
 " search forward for word under cursor.  use n and N
 " nnoremap <Leader><Leader><Leader> *``
 nnoremap <Leader>cursor *`` 
@@ -355,6 +352,7 @@ nmap p "0p
 nmap P "0P
 " surround the current word in quotes
 nmap <Leader>' ysiw'
+nmap <Leader>" ysiw"
 nnoremap <Leader><Leader>t :terminal<CR>
 
 let g:minimap_width = 10
@@ -371,15 +369,16 @@ nnoremap <Leader>m :MinimapToggle<CR>
 " faster navigation
 noremap K     {
 noremap J     }
-noremap H     ^
-noremap L     $
+" back and forth with shift H and L
+nnoremap H     <c-o>
+nnoremap L     <c-i>
 
 " insert mode navigation
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-
+" fast insert mode navigation
 inoremap <C-K> <ESC>{i
 inoremap <C-J> <ESC>}i
 inoremap <C-H> <ESC>^i
@@ -389,6 +388,12 @@ inoremap <C-L> <ESC>$i
 nnoremap <Leader><Leader>c zM
 nnoremap <Leader><Leader>o zR
 
+" faster up and down with ctrl j and k
+nnoremap <c-j> <c-f>
+nnoremap <c-k> <c-b>
 
+" get to beginning and end of line ctrl H and L
+nnoremap <C-H> ^
+nnoremap <C-L> $
 
 
