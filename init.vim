@@ -377,11 +377,6 @@ inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-" fast insert mode navigation
-inoremap <C-K> <ESC>{i
-inoremap <C-J> <ESC>}i
-inoremap <C-H> <ESC>^i
-inoremap <C-L> <ESC>$i
 
 " quicker folds, open and close
 nnoremap <Leader><Leader>c zM
@@ -395,4 +390,11 @@ nnoremap <c-k> <c-b>
 nnoremap <C-H> ^
 nnoremap <C-L> $
 
+nnoremap <Leader>/ :%s/
 
+nnoremap <Leader>- :
+
+
+
+
+nnoremap <leader>- :g/^$/d <cr>
