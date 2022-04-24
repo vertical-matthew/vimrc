@@ -185,6 +185,8 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'wfxr/minimap.vim'
 " Plug 'lukas-reineke/indent-blankline.nvim'
 
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
 call plug#end()
 
 filetype plugin indent on
@@ -201,8 +203,8 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded .VIMRC"
 nnoremap zz :update<cr>
 noremap <c-s> :update<cr>
 imap jk <Esc>
-nnoremap <Leader>9 <C-w>v          " Vertical split
-nnoremap <Leader>8 <C-w>s         " Horizontal split 
+" nnoremap <Leader>9 <C-w>v          " Vertical split
+" nnoremap <Leader>8 <C-w>s         " Horizontal split 
 nnoremap <Leader><Leader>h <C-w>v          " Vertical split
 nnoremap <Leader><Leader>v <C-w>s         " Horizontal split 
 " visual shifting (does not exit Visual mode)
@@ -390,11 +392,53 @@ nnoremap <c-k> <c-b>
 nnoremap <C-H> ^
 nnoremap <C-L> $
 
-nnoremap <Leader>/ :%s/
-
 nnoremap <Leader>- :
-
-
-
-
+" delete white space
 nnoremap <leader>- :g/^$/d <cr>
+
+
+" use the command below to update quickfix.  Multiple file replacement
+" nnoremap <Leader>r :cfdo %s///g | update 
+
+
+" example of how to use :Rg
+ " rg 'def build' --type py
+
+
+" Command	List
+" :Files [PATH]	Files (runs $FZF_DEFAULT_COMMAND if defined)
+" :GFiles [OPTS]	Git files (git ls-files)
+" :GFiles?	Git files (git status)
+" :Buffers	Open buffers
+" :Colors	Color schemes
+" :Ag [PATTERN]	ag search result (ALT-A to select all, ALT-D to deselect all)
+" :Rg [PATTERN]	rg search result (ALT-A to select all, ALT-D to deselect all)
+" :Lines [QUERY]	Lines in loaded buffers
+" :BLines [QUERY]	Lines in the current buffer
+" :Tags [QUERY]	Tags in the project (ctags -R)
+" :BTags [QUERY]	Tags in the current buffer
+" :Marks	Marks
+" :Windows	Windows
+" :Locate PATTERN	locate command output
+" :History	v:oldfiles and open buffers
+" :History:	Command history
+" :History/	Search history
+" :Snippets	Snippets (UltiSnips)
+" :Commits	Git commits (requires fugitive.vim)
+" :BCommits	Git commits for the current buffer; visual-select lines to track changes in the range
+" :Commands	Commands
+" :Maps	Normal mode mappings
+" :Helptags	Help tags 1
+" :Filetypes	File types
+"
+"
+
+" search and replace
+nmap  S  :%s///g<LEFT><LEFT><LEFT>
+" search all lines in working directory
+" nnoremap /// :Lines<CR> 
+" Ripgrep search
+nnoremap ? :Rg 
+
+
+nnoremap <leader>9 :Autoformat<CR>
