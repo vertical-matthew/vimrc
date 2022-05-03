@@ -33,7 +33,7 @@ set laststatus=2
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set matchpairs+=<:> " use % to jump between pairs
 set modelines=0
-set mouse=a         
+set mouse=a
 set noshiftround
 set nowrap
 set number relativenumber
@@ -67,13 +67,14 @@ Plug 'vim-scripts/YankRing.vim'
 "
 "
 " Search
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'mfussenegger/nvim-lint'
 Plug 'dense-analysis/ale'
 Plug 'rhysd/clever-f.vim'
 " Plug 'easymotion/vim-easymotion'
-Plug 'phaazon/hop.nvim' 
+Plug 'phaazon/hop.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'BurntSushi/ripgrep'
@@ -107,13 +108,16 @@ Plug 'tpope/vim-abolish'
 "
 "
 " Other
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
+
+
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'matze/vim-move'
-"
+
 "
 "
 " Display
@@ -133,11 +137,11 @@ Plug 'arcticicestudio/nord-vim'
 " Verb
 Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-sort-motion'
-Plug 'christoomey/vim-system-copy'  
+Plug 'christoomey/vim-system-copy'
 Plug 'christoomey/vim-titlecase'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
 "
 "
@@ -146,7 +150,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'bps/vim-textobj-python'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'h1mesuke/textobj-wiw'
-Plug 'kana/vim-arpeggio'
+" Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-textobj-datetime'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-lastpat'
@@ -184,9 +188,12 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'glepnir/dashboard-nvim'
 Plug 'wfxr/minimap.vim'
 " Plug 'lukas-reineke/indent-blankline.nvim'
-
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
+Plug 'kkoomen/vim-doge'
+" Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'karb94/neoscroll.nvim'
+Plug 'folke/todo-comments.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'VonHeikemen/searchbox.nvim'
 call plug#end()
 
 filetype plugin indent on
@@ -200,20 +207,19 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 noremap qq :q<CR>
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded .VIMRC"
-nnoremap zz :update<cr>
 noremap <c-s> :update<cr>
 imap jk <Esc>
 " nnoremap <Leader>9 <C-w>v          " Vertical split
-" nnoremap <Leader>8 <C-w>s         " Horizontal split 
+" nnoremap <Leader>8 <C-w>s         " Horizontal split
 nnoremap <Leader><Leader>h <C-w>v          " Vertical split
-nnoremap <Leader><Leader>v <C-w>s         " Horizontal split 
+nnoremap <Leader><Leader>v <C-w>s         " Horizontal split
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
-vnoremap > >gv 
-nnoremap <silent> // :BLines<CR>
-noremap <Leader>1 :Goyo<CR> 
+vnoremap > >gv
+" nnoremap <silent> // :BLines<CR>
+noremap <Leader>1 :Goyo<CR>
 noremap <Leader>2 :Limelight!!<CR>
-noremap <Leader><Leader>g :Goyo<CR> 
+noremap <Leader><Leader>g :Goyo<CR>
 noremap <Leader><Leader>l :Limelight!!<CR>
 noremap <Leader><Leader>f :Goyo<CR> :Limelight!!<CR>
 
@@ -230,7 +236,7 @@ let g:yankring_max_history = 1000
 let g:yankring_min_element_length = 2
 let g:yankring_max_display = 70
 
-set spell spelllang=en_us 
+set spell spelllang=en_us
 
 " " change the arrow keys
 nnoremap <Left> <<
@@ -239,8 +245,8 @@ nmap <Up> [e
 nmap <Down> ]e
 " go to the last location
 nnoremap <leader>x :b#<CR>
-
 set termguicolors
+
 
 let g:LanguageClient_serverCommands = {
     \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
@@ -302,6 +308,7 @@ augroup end
 nmap <leader>qf  <Plug>(coc-fix-current)
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python map <buffer> <Leader>run :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python map <buffer> <Leader>0 :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
@@ -329,24 +336,24 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Default value is clap
 let g:dashboard_default_executive ='fzf'
 " replace current word and repeat with . n will skip R goes backwards
-nnoremap <Leader><Leader>r *``cgn
 nnoremap <Leader><Leader>R #``cgN
+nnoremap <Leader><Leader>r *``cgn
 
 " forward and back tabs
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
-" hi my wife is beautiful  
+" hi my wife is beautiful
 "
 " search forward for word under cursor.  use n and N
 " nnoremap <Leader><Leader><Leader> *``
-nnoremap <Leader>cursor *`` 
+nnoremap <Leader>cursor *``
 nnoremap Y y$
 inoremap jj <ESC>
 nnoremap <Leader>yr :YRShow<CR>
 nnoremap <Leader>nt :NERDTreeToggle %<CR> <c-w><c-p>
 nnoremap <Leader>un :UndotreeToggle<CR> <c-w><c-p>
 nnoremap <Leader>tg :TagbarToggle<CR> <c-w><c-p>
-nnoremap <Leader><Leader><Leader> :NERDTreeToggle<CR> :TagbarToggle<CR> 
+nnoremap <Leader><Leader><Leader> :NERDTreeToggle<CR> :TagbarToggle<CR>
 
 nnoremap ; :
 vnoremap ; :
@@ -357,8 +364,8 @@ nmap <Leader>" ysiw"
 nnoremap <Leader><Leader>t :terminal<CR>
 
 let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
+let g:minimap_auto_start = 0
+let g:minimap_auto_start_win_enter = 0
 
 nnoremap <Leader>m :MinimapToggle<CR>
 
@@ -392,13 +399,12 @@ nnoremap <c-k> <c-b>
 nnoremap <C-H> ^
 nnoremap <C-L> $
 
-nnoremap <Leader>- :
 " delete white space
 nnoremap <leader>- :g/^$/d <cr>
 
 
 " use the command below to update quickfix.  Multiple file replacement
-" nnoremap <Leader>r :cfdo %s///g | update 
+" nnoremap <Leader>r :cfdo %s///g | update
 
 
 " example of how to use :Rg
@@ -436,9 +442,104 @@ nnoremap <leader>- :g/^$/d <cr>
 " search and replace
 nmap  S  :%s///g<LEFT><LEFT><LEFT>
 " search all lines in working directory
-" nnoremap /// :Lines<CR> 
+" nnoremap /// :Lines<CR>
 " Ripgrep search
-nnoremap ? :Rg 
+" nnoremap ? :Rg
+nnoremap ? <cmd>Telescope live_grep<cr>
 
 
 nnoremap <leader>9 :Autoformat<CR>
+
+
+
+" nnoremap <C-f> :CtrlSF
+
+" nmap     <C-F>f <Plug>CtrlSFPrompt
+" vmap     <C-F>f <Plug>CtrlSFVwordPath
+" vmap     <C-F>F <Plug>CtrlSFVwordExec
+" nmap     <C-F>n <Plug>CtrlSFCwordPath
+" nmap     <C-F>p <Plug>CtrlSFPwordPath
+" nnoremap <C-F>o :CtrlSFOpen<CR>
+" nnoremap <C-F>t :CtrlSFToggle<CR>
+" inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+
+
+nmap     <C-f> <Plug>CtrlSFPrompt
+vmap     <C-f> <Plug>CtrlSFVwordPath
+
+
+
+
+" Using Lua functions
+" nnoremap <leader>fF <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
+nnoremap // <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
+" builtin.find_files
+"
+let g:python_highlight_space_errors = 0
+
+
+
+" confirms selection if any or just break line if none
+function! EnterSelect()
+    " if the popup is visible and an option is not selected
+    if pumvisible() && complete_info()["selected"] == -1
+        return "\<C-y>\<CR>"
+
+    " if the pum is visible and an option is selected
+    elseif pumvisible()
+        return coc#_select_confirm()
+
+    " if the pum is not visible
+    else
+        return "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    endif
+endfunction
+
+" makes <CR> confirm selection if any or just break line if none
+inoremap <silent><expr> <cr> EnterSelect()
+
+
+
+let g:ale_linters = {'python': ['flake8', 'pydocstyle', 'bandit', 'mypy']}
+let g:ale_fixers = {'*':['remove_trailing_lines', 'trim_whitespace'], 'python':['black', 'isort']}
+let g:ale_fix_on_save = 1
+
+
+
+lua require('neoscroll').setup()
+
+
+
+
+nnoremap zz :update<cr>
+
+
+
+
+
+" faster up and down with ctrl j and k
+nmap J <c-d>
+nmap K <c-u>
+nmap <c-j> <c-f>
+nmap <c-k> <c-b>
+
+" TODO here is a todo comment
+" NOTE
+" FIX
+" HACK
+" TODO: here is a todo, they need a colon!!!!
+" FIX: this is something I need to fix
+" HACK: here is something to hack
+
+lua << EOF
+  require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+
+nnoremap <leader>s :SearchBoxReplace<CR>
+nnoremap <leader>qq :qa!<CR>
