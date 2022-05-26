@@ -448,10 +448,8 @@ nmap  S  :%s///g<LEFT><LEFT><LEFT>
 nnoremap ? <cmd>Telescope live_grep<cr>
 
 
-nnoremap <leader>9 :Autoformat<CR>
-
-
-
+" nnoremap <leader>9 :Autoformat<CR>
+nnoremap <leader>9 :ALEFix<CR>
 " nnoremap <C-f> :CtrlSF
 
 " nmap     <C-F>f <Plug>CtrlSFPrompt
@@ -502,8 +500,11 @@ inoremap <silent><expr> <cr> EnterSelect()
 
 
 let g:ale_linters = {'python': ['flake8', 'pydocstyle', 'bandit', 'mypy']}
+let g:ale_fix_on_save = 0
 let g:ale_fixers = {'*':['remove_trailing_lines', 'trim_whitespace'], 'python':['black', 'isort']}
-let g:ale_fix_on_save = 1
+
+
+
 
 
 
@@ -519,10 +520,10 @@ nnoremap zz :update<cr>
 
 
 " faster up and down with ctrl j and k
-nmap J <c-d>
-nmap K <c-u>
-nmap <c-j> <c-f>
-nmap <c-k> <c-b>
+nmap <c-j> <c-d>
+nmap <c-k> <c-u>
+nmap J }
+nmap K {
 
 " TODO here is a todo comment
 " NOTE
