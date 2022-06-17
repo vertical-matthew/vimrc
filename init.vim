@@ -121,7 +121,8 @@ Plug 'matze/vim-move'
 "
 "
 " Display
-Plug 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'machakann/vim-highlightedyank'
 Plug 'markonm/traces.vim'
 Plug 'junegunn/goyo.vim'
@@ -544,3 +545,6 @@ EOF
 
 nnoremap <leader>s :SearchBoxReplace<CR>
 nnoremap <leader>qq :qa!<CR>
+
+
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
